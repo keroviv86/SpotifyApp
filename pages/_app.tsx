@@ -1,4 +1,5 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import PlayerLayout from "../components/playerLayout";
 import "reset-css";
 // allows all browser to have the same css
 
@@ -23,16 +24,22 @@ const theme = extendTheme({
           ':focus': {
             outline: "none",
             boxShadow: "none",
-          }
-        }
-      }
+          },
+        },
+      },
       // varients is the type of button 
-    }
-  }
-})
+    },
+  },
+});
 
 const MyApp = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+  return (
+    <ChakraProvider theme={theme}>
+      <PlayerLayout>
+        <Component {...pageProps} />;
+      </PlayerLayout>
+    </ChakraProvider>
+  );
 };
 
 export default MyApp;
